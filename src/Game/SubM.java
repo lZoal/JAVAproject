@@ -3,10 +3,9 @@ package Game;
 
 public class SubM {
     private String name=null; //이름
-    private int cell,size,move;
-    private static final String body = "■";
-    private boolean Header=false;
-    private SubM next;
+    private int cell,size,move; //cell 체력 ,size 잠수함 크기, move 이동거리
+    private boolean Header=false; //헤더인지 확인
+
     SubM() {
         size=3;
         move=4;
@@ -16,16 +15,9 @@ public class SubM {
         this();
         this.name= name;
     }
-
-
-
-
-
-    public int getCell() {return cell;}
+    public int getCell() {return cell;} // getter setter 함수들
     public void setCell(int cell) {this.cell=cell;}
     public int getMove(){return move;}
-    public void setNext(SubM next){this.next=next; }
-    public SubM getNext(){return next;}
     public boolean getHeader(){return Header;}
     public void setHeader(){Header=true;}
     public void reHeader(){Header=false;}

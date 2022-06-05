@@ -4,11 +4,11 @@ import java.util.Scanner;
 
 //잠수함의 객체 설정 및 게임 플레이 GameHelper와 SubM 클래스 이용
 public class GameBust {
-    Scanner sc=new Scanner(System.in);
-    GameHelper game;
-    SubM player1,player2;
+    Scanner sc=new Scanner(System.in); //입력을 받아야하므로 사용
+    GameHelper game; //GameHelper 클래스 를선언
+    SubM player1,player2; //플레이어는 2명이므로 2개의 SubM객체 생성
 
-    public void SetUpGame(){
+    public void SetUpGame(){ //게임 기본설정 이름입력 게임판 사이즈지정
         String name;
         int GameSize;
         System.out.printf("---------------------\n잠수함게임\n---------------------");
@@ -27,7 +27,7 @@ public class GameBust {
         game.PlaceSubMarine(player2);
 
     }
-    public void StartPlaying(){
+    public void StartPlaying(){ //게임 시작
         int choice;
         while(true) {
             game.printGrid(player1);
