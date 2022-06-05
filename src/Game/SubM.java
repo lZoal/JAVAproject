@@ -10,7 +10,11 @@ public class SubM {
     SubM() {
         size=3;
         move=4;
-        cell=3;
+        cell=5;
+    }
+    SubM(String name) {
+        this();
+        this.name= name;
     }
 
 

@@ -57,17 +57,13 @@ public class GameHelper {
         int attempt= marine.getSize(),rand;
         int select;
         rand=(int)((Math.random()*10000)%(gridSize-1));
-        System.out.println("랜덤수 지정 " + rand);
             if(!grid.get(rand).isUse) {
-                System.out.println("미사용중확인");
                 grid.get(rand).isUse=true;
                 grid.get(rand).sub.setName(marine.getName());
                 grid.get(rand).sub.setHeader();
                 while(attempt-- !=0) {
                     select=(int)((Math.random()*10000)%3); //0상 1하 2좌 3우
-                    System.out.println("선택값 " + select);
                     while(true) {
-                        System.out.println("재선택됨" + select);
                         if(select ==0 && (rand <gridLength || grid.get(rand-gridLength).isUse) ) {
                             select=(int)((Math.random()*10000)%4);
                         }
@@ -282,7 +278,6 @@ public class GameHelper {
         String temp;
         while(alphabet.charAt(row)!=atkPos.charAt(0)) row++;
         col=(int)atkPos.charAt(1)-48;
-        System.out.println(row +" "+ col);
         for(int i=0;i<gridLength;i++) { //행 공격
             temp=atkPos.charAt(0)+String.valueOf(i);
             if(grid.get((row*gridLength)+i).isUse) {
@@ -299,6 +294,15 @@ public class GameHelper {
                 System.out.printf("%s에 객체 발견 및 공격 수행  남은 체력: %d\n",grid.get(i*gridLength +col).pos,grid.get((i*gridLength)+col).sub.getCell());
             }
         }
+    }
+    public boolean IsEnd() {
+        for(Grid i:  grid) {
+            if(i.sub.getCell()<=0) {
+                System.out.printf("%s 함선의 %s좌표의 함체의 체력이 0이하로 떨어져 파괴되었습니다!\n\n",i.sub.getName(),i.pos);
+                return true;
+            }
+        }
+        return false;
     }
     public void printGrid(){ //그리드 출력
         int cnt=0;
