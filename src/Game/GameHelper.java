@@ -302,10 +302,10 @@ public class GameHelper {
         for(Grid i : grid) {
             cnt++;
             if(i.isUse && !i.sub.getHeader() && marine.getName()== i.sub.getName()) { //출력할 객체 이름과 일치하고 헤더부분이 아닐경우
-                System.out.printf("%3c ", 'x');
+                System.out.printf("%3c ", '●');
             }
             else if(i.sub.getHeader()&&marine.getName()== i.sub.getName()){ //출력할 객체이름 이 일치하고 헤더부분일경우
-                System.out.printf("%3c ",'o');
+                System.out.printf("%3c ",'■');
             }
             else {
                 System.out.printf("%3s ",i.pos); //그외의경우에는 문자열 좌푯값을 출력함
