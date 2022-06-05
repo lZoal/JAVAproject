@@ -203,7 +203,7 @@ public class GameHelper {
                     break;
 
                 case 'd': //우
-                    if((Head.grid+1)%(gridLength-1)==0|| grid.get(Head.grid+1).isUse) {
+                    if((Head.grid+1)%(gridLength)==0|| grid.get(Head.grid+1).isUse) {
                         System.out.println("우 이동 실패");
                     }
                     else {
@@ -233,7 +233,7 @@ public class GameHelper {
                     }
                     break;
                 case 'a': //좌
-                    if(((Head.grid-1)%(gridLength))==0|| grid.get(Head.grid-1).isUse) {
+                    if(((Head.grid-1)%(gridLength))==gridLength-1|| grid.get(Head.grid-1).isUse) {
                         System.out.println("좌 이동 실패");
                     }
                     else {
@@ -277,7 +277,7 @@ public class GameHelper {
         atkPos=sc.next();
         String temp;
         while(alphabet.charAt(row)!=atkPos.charAt(0)) row++;
-        col=(int)atkPos.charAt(1)-48;
+        col=Integer.parseInt(atkPos.substring(1));
         for(int i=0;i<gridLength;i++) { //행 공격
             temp=atkPos.charAt(0)+String.valueOf(i);
             if(grid.get((row*gridLength)+i).isUse) {
@@ -304,29 +304,23 @@ public class GameHelper {
         }
         return false;
     }
-    public void printGrid(){ //그리드 출력
+    public void printGrid(SubM marine){ //그리드 출력
         int cnt=0;
         for(Grid i : grid) {
             cnt++;
-            if(i.isUse && !i.sub.getHeader()) {
+            if(i.isUse && !i.sub.getHeader() && marine.getName()== i.sub.getName()) {
                 System.out.printf("%3c ", 'x');
             }
-            else if(i.sub.getHeader()){
+            else if(i.sub.getHeader()&&marine.getName()== i.sub.getName()){
                 System.out.printf("%3c ",'o');
             }
             else {
-                System.out.printf("%3s ",i.pos);
+                System.out.printf("%3s ",i.grid);
             }
             if(cnt%gridLength==0)
                 System.out.println();
 
         }
-        System.out.printf("\n객체에 저장된값 [ ");
-        for(Grid i : grid) {
-            if(i.isUse)
-                System.out.printf(" %s ",i.pos);
-        }
-        System.out.printf("]");
 
     }
 }
